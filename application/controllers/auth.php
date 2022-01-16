@@ -95,26 +95,26 @@ class Auth extends  CI_Controller
         } else {
             $email = htmlspecialchars($this->input->post('email', true));
             $e_email = explode('.', $email);
-            // if ($e_email[1] != 'r19mi@plb' && $e_email[1] != "r19ab@plb" && $e_email[1] != "r19ak@plb" && $e_email[1] != "r19hms@plb" && $e_email[1] != 'r20mi@plb' && $e_email[1] != "r20ab@plb" && $e_email[1] != "r20ak@plb" && $e_email[1] != "r20hms@plb" && $e_email[1] != 'r21mi@plb' && $e_email[1] != "r21ab@plb" && $e_email[1] != "r21ak@plb" && $e_email[1] != "r21hms@plb") {
-            //     $data['email_erorr'] = '<small class="text-danger mt-3 ml-2">Email that can use only email plb</small>';
-            //     $this->load->view('auth_templates/header', $data);
-            //     $this->load->view('page/register', $data);
-            //     $this->load->view('auth_templates/footer');
-            // } else {
-            // $pwd = md5(htmlentities($this->input->post('password2', TRUE)));
-            // $data = array(
-            //     'candidate_id' => 0,
-            //     'email' => htmlspecialchars($this->input->post('email', TRUE)),
-            //     'password' => $pwd,
-            //     'is_active' => 0
-            // );
-            // $this->db->insert('voter', $data);
+            if ($e_email[1] != 'r19mi@plb' && $e_email[1] != "r19ab@plb" && $e_email[1] != "r19ak@plb" && $e_email[1] != "r19hms@plb" && $e_email[1] != 'r20mi@plb' && $e_email[1] != "r20ab@plb" && $e_email[1] != "r20ak@plb" && $e_email[1] != "r20hms@plb" && $e_email[1] != 'r21mi@plb' && $e_email[1] != "r21ab@plb" && $e_email[1] != "r21ak@plb" && $e_email[1] != "r21hms@plb") {
+                $data['email_erorr'] = '<small class="text-danger mt-3 ml-2">Email that can use only email plb</small>';
+                $this->load->view('auth_templates/header', $data);
+                $this->load->view('page/register', $data);
+                $this->load->view('auth_templates/footer');
+            } else {
+            $pwd = md5(htmlentities($this->input->post('password2', TRUE)));
+            $data = array(
+                'candidate_id' => 0,
+                'email' => htmlspecialchars($this->input->post('email', TRUE)),
+                'password' => $pwd,
+                'is_active' => 0
+            );
+            $this->db->insert('voter', $data);
             $config = [
                 'protocol' => 'smtp',
                 'smtp_host' => 'ssl://smtp.googlemail.com',
                 'smtp_port' => 465,
                 'smtp_user' => 'lutfirahman400@gmail.com',
-                'smtp_pass' => 'nu54nt4r4',
+                'smtp_pass' => '-',
                 'mailtype'  => 'html',
                 'charset'   => 'iso-8859-1'
             ];
